@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+  <div class="header">
+    <h1>Staff Order App</h1>
+  </div>
+
+{% if session.username %}
+  <p>Olet kirjautunut nimellä {{ session.username }}</p>
+  <a href="/logout">Kirjaudu ulos</a>
+{% else %}
+    <form action="/login" method="POST">
+      <p>Tunnus:<br>
+        <input type="text" name="username"></p>
+      <p>Salasana:<br>
+        <input type="password" name="password"></p>
+      <input type="submit" value="Kirjaudu">
+    </form>
+<br>
+    <form action="/create_user" method="GET">
+      <input type="submit" value="Luo tunnus">
+    </form>
+{% endif %}
+
+</body>
