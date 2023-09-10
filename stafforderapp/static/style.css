@@ -9,4 +9,6 @@ body {
     font-weight: bold;
     padding: 2em 1em;
     font-size: 2em;
+    border-radius: .5em;
+    margin-top: .5em;
 }
