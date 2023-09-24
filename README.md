@@ -6,7 +6,7 @@ Sovelluksen avulla työntekijät voivat tehdä henkilökuntatilauksia yrityksen 
 - Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen.
 - Käyttäjä näkee sovelluksessa yrityksen tuotteet ja niiden henkilökuntahinnat.
 
-##Tulevat ominaisuudet
+## Tulevat ominaisuudet
 - Käyttäjä voi lisätä tuotteita omaan tilaukseensa sekä muokata tilaustaan tilausajan päättymiseen asti.
 - Käyttäjä pystyy näkemään tilaston oman tilauksensa sisällöstä.
 - Ylläpitäjä voi lisätä ja poistaa tuotteita sekä muuttaa tuotteiden henkilökuntahintoja.
