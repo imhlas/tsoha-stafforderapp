@@ -3,16 +3,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
-  <div class="header">
-    <h1>Staff Order App</h1>
+
+  {% include 'navbar.html' %}
+
+
+  <div class="main-container">
+    <div class="header">
+      <h1>Tervetuloa</h1>
+    </div>
+  
+  {% if session.username %}
+  <p>
+  <div class = "product-container">
+    {% for product in products %}
+      <div class="product-card">
+        <div class="product-image">  
+          <img src="{{ url_for('show_image', product_number=product.product_number) }}" alt="{{ product.name }}">
+        </div>
+        <div class="product-info">
+          <h2>{{ product.name }}</h2>
+          <h2>{{product.price}}€</h2>
+        </div>
+        <form method="POST" action="/add_to_cart">
+          <input type="hidden" name="product_id" value="{{ product.id }}">
+          <input type="submit" value="Add to Cart" class="add-to-cart-button">
+        </form>
+      </div>
+    {% endfor %}
   </div>
+  </p>
+  {% else %}
+    Kirjaudu sisään
+  {% endif %}
 
-{% if session.username %}
-  <p>Olet kirjautunut nimellä {{ session.username }}</p>
-  <a href="/logout">Kirjaudu ulos</a>
-{% else %}
-
-  <p>Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a> | <a href="/create_user">Luo tunnus</a></p>
-{% endif %}
+  </div>
 
 </body>

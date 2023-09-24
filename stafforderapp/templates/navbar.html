@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="login-container">
+    {% if session.username %}
+      <p>Olet kirjautunut nimellä {{ session.username }}</p>
+      <a href="/logout" class="link">Kirjaudu ulos</a>
+    {% else %}
+      <a href="/login" class="link">Kirjaudu sisään</a> | <a href="/create_user" class="link">Rekisteröidy</a>
+    {% endif %}
+  </div>
+  <div class="nav">
+    <div class="appname">Staff Order App</div>
+    <div class="search">
+      <input type="text" class="search-box" placeholder="search brand, product">
+      <button class="search-btn">search</button>
+    </div>
+    <div class="nav-items">
+      <a href="/" class="link">Etusivu</a>
+      <a href="/orders" class="link">Tilaukset</a>
+    </div>
+  </div>
+</nav>
