@@ -1,6 +1,6 @@
 venv/
 .env
 __pycache__/
-.dockerignore
-Procfile
-fly.toml
+stafforderapp/.dockerignore
+stafforderapp/Procfile
+stafforderapp/fly.toml
