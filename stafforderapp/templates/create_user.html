@@ -3,19 +3,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
-  <div class="header">
-    <h1>Staff Order App</h1>
+
+  {% include 'navbar.html' %}
+
+  <div class="main-container">
+    <div class="header"> 
+      <h2>Luo käyttäjätunnus</h2>
+    </div>
+
+    <form action="/create_user" method="POST">
+      Tunnus: <input type="text" name="username"><br>
+      Salasana: <input type="password" name="password"><br>
+      <input type="submit" value="Luo tunnus"><br>
+    </form>
   </div>
-    <h2>Luo käyttäjätunnus</h2>
-
-  <form action="/" method="POST">
-    <p>Tunnus:<br>
-      <input type="text" name="username"></p>
-    <p>Salasana:<br>
-      <input type="password" name="password"></p>
-    <input type="submit" value="Luo tunnus">
-  </form>
-
 </body>
 
 
