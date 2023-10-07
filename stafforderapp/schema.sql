@@ -17,3 +17,18 @@ CREATE TABLE images (
     product_number INTEGER,
     data BYTEA
 );
+
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER,
+    order_date DATE,
+    order_status TEXT
+);
+
+CREATE TABLE order_details (
+    id SERIAL PRIMARY KEY,
+    order_id INTEGER,
+    product_id INTEGER,
+    quantity INTEGER,
+    price DECIMAL(10,2)
+);
