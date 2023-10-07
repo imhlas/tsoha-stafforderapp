@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/orders_table.css"> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
 
-  {% include 'navbar.html' %}
+{% include 'navbar.html' %}
 
-
-  <div class="main-container">
+<div class="main-container">
     <div class="header">
-      <h1>Tilauksesi</h1>
+        <h1>Tilauksesi</h1>
     </div>
-  </div>
+    
+    {% if products_list %}
+        <!-- Display the table if there are ordered products -->
+        <table>
+            <tr>
+                <th>Tuote</th>
+                <th>Hinta</th>
+                <th>Määrä</th>
+            </tr>
+            {% for product in products_list %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}€</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>
+                        <form action="/delete_product" method="POST">
+                            <input type="hidden" name="order_detail_id" value="{{ product.id }}">
+                            <input type="submit" value="Poista tilauksesta">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>TOTAL</td>
+                <td>{{ total_price }}€</td>
+                <td>{{ total_quantity }}</td>
+            </tr>
+        </table>
+    {% else %}
+        <!-- Display a message if there are no ordered products -->
+        <p>Ei nykyisiä tilauksia.</p>
+    {% endif %}
+</div>
 
 </body>
-

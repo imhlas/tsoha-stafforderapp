@@ -26,6 +26,7 @@
         </div>
         <form method="POST" action="/add_to_cart">
           <input type="hidden" name="product_id" value="{{ product.id }}">
+          <input type="hidden" name="price" value="{{ product.price }}">
           <input type="submit" value="Add to Cart" class="add-to-cart-button">
         </form>
       </div>
