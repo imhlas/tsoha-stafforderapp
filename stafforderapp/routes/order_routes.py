@@ -1,43 +1,6 @@
 from app import app
 from flask import render_template, request, redirect, make_response, session
-import products
-import users
 import orders
-
-@app.route("/")
-def index():
-    return render_template("index.html", products=products.get_all_products())
-
-@app.route('/show_image/<int:product_number>')
-def show_image(product_number):
-    data = products.get_image(product_number)
-    response = make_response(bytes(data))
-    response.headers.set("Content-Type", "image/png")
-    return response
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "GET":
-        return render_template("login.html")
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        if users.login(username, password):
-            return redirect("/")
-        else:
-            return render_template("error.html", message="Väärä tunnus tai salasana")
-
-@app.route("/create_user", methods=["GET", "POST"])
-def create_user():
-    if request.method == "GET":
-        return render_template("create_user.html")
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        if users.register(username, password):
-            return redirect("/login")
-        else:
-            return render_template("error.html", message="Rekisteröinti ei onnistunut")
 
 @app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
@@ -52,10 +15,11 @@ def add_to_cart():
 
 @app.route("/orders")
 def view_orders():
-    if not session["user_id"]:
+    user_id = session.get("user_id")
+    if not user_id:
         return redirect("/")
 
-    ordered_products = orders.get_current_order_details(session["user_id"])
+    ordered_products = orders.get_current_order_details(user_id)
     if not ordered_products:
         return render_template("orders.html",
                                products_list=[],
@@ -77,8 +41,3 @@ def delete_product_from_order():
     order_detail_id = request.form["order_detail_id"]
     orders.delete_order_detail(order_detail_id)
     return redirect("/orders")
-
-@app.route("/logout")
-def logout():
-    users.logout()
-    return redirect("/")
