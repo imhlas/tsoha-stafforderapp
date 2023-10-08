@@ -1,8 +1,8 @@
 table {
-    width: 100%; /* Match width with the header */
+    width: 100%; 
     border-collapse: collapse;
-    margin-bottom: 20px;
-    table-layout: auto; /* Adjust column widths based on cell content */
+    margin-top: 20px;
+    table-layout: auto;
 }
 
 th {

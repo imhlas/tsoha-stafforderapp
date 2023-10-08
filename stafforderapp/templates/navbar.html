@@ -9,13 +9,17 @@
   </div>
   <div class="nav">
     <div class="appname">Staff Order App</div>
+    {% if session.role==2 %}
     <div class="search">
       <input type="text" class="search-box" placeholder="search brand, product">
       <button class="search-btn">search</button>
     </div>
+    {% endif %}
     <div class="nav-items">
       <a href="/" class="link">Etusivu</a>
+    {% if session.role==2 %}
       <a href="/orders" class="link">Tilaukset</a>
+    {% endif %}
     </div>
   </div>
 </nav>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="/static/style.css">
-<link rel="stylesheet" href="/static/orders_table.css"> 
+<link rel="stylesheet" href="/static/orders_table.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
@@ -9,38 +9,37 @@
 
 <div class="main-container">
     <div class="header">
-        <h1>Tilauksesi</h1>
+        <h1>Tuotevalikoima</h1>
     </div>
-    
+
     {% if products_list %}
         <table>
             <tr>
-                <th>Tuote</th>
+                <th>Tuotteen nimi</th>
+                <th>Tuotenumero</th>
                 <th>Hinta</th>
-                <th>Määrä</th>
             </tr>
             {% for product in products_list %}
                 <tr>
                     <td>{{ product.name }}</td>
+                    <td>{{ product.product_number }}</td>
                     <td>{{ product.price }}€</td>
-                    <td>{{ product.quantity }}</td>
                     <td>
-                        <form action="/delete_product" method="POST">
+                        <form action="/modify_product_info" method="POST">
                             <input type="hidden" name="order_detail_id" value="{{ product.id }}">
-                            <input type="submit" value="Poista tilauksesta">
+                            <input type="submit" value="Muokkaa">
                         </form>
                     </td>
                 </tr>
             {% endfor %}
             <tr>
-                <td>TOTAL</td>
-                <td>{{ total_price }}€</td>
+                <td>TUOTTEITA YHTEENSÄ</td>
+                <td>-</td>
                 <td>{{ total_quantity }}</td>
             </tr>
         </table>
-    {% else %}
-        <p>Ei nykyisiä tilauksia.</p>
     {% endif %}
 </div>
 
 </body>
+

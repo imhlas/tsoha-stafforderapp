@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/orders_table.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="main-container">
+    <div class="header">
+        <h1>Lisää uusi tuote</h1>
+    </div>
+
+    <form action="/add_product" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td><label for="name">Tuotteen nimi:</label></td>
+                <td><input type="text" name="name" required></td>
+            </tr>
+            <tr>
+                <td><label for="product_number">Tuotenumero:</label></td>
+                <td><input type="text" name="product_number" required></td>
+            </tr>
+            <tr>
+                <td><label for="price">Hinta:</label></td>
+                <td><input type="text"  name="price" required></td>
+            </tr>
+            <tr>
+                <td><label for="file">Tuotteen kuva:</label></td>
+                <td><input type="file" name="file"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Tallenna tuote">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

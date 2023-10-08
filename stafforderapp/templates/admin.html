@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+  {% include 'navbar.html' %}
+
+
+  <div class="main-container">
+    <div class="header">
+      <h1>Tervetuloa</h1>
+    </div>
+
+    {% if session.role == 1 %}
+      <div class="product-container">
+        <a href="/orders_admin" class="button">Tilaukset</a>
+        <a href="/product_portfolio" class="button">Tuotteet</a>
+       <a href="/add_product" class="button">Lisää tuote</a>
+      </div>
+    {% endif %}
+
+  </div>
+</body>
