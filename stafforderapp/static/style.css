@@ -8,7 +8,7 @@ body {
 
 .main-container {
   margin: auto;
-  max-width: 45em;
+  max-width: 60em;
   font-family: 'Roboto', sans-serif;
   text-align: center; 
 }
@@ -20,6 +20,7 @@ body {
     font-size: 1.5em;
     border-radius: .5em;
     margin-top: .5em;
+    margin-bottom: 30px;
 }
 
 .button {
@@ -38,7 +39,8 @@ body {
 }
 
 .product-container {
-    margin-top: 2em;
+    margin: 2em auto;
+    width: calc(3 * 250px + 2* 40px);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;  
@@ -81,7 +83,7 @@ body {
 
 .input-container {
     width: 50%; 
-    margin-top: 20px;
+    margin: 20px auto;
     background-color: #fff;
     padding: 20px;
     border: 1px solid #d1d1d1;

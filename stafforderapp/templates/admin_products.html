@@ -18,6 +18,7 @@
                 <th>Tuotteen nimi</th>
                 <th>Tuotenumero</th>
                 <th>Hinta</th>
+                <th></th>
             </tr>
             {% for product in products_list %}
                 <tr>
@@ -25,10 +26,16 @@
                     <td>{{ product.product_number }}</td>
                     <td>{{ product.price }}€</td>
                     <td>
-                        <form action="/modify_product_info" method="POST">
-                            <input type="hidden" name="order_detail_id" value="{{ product.id }}">
+                      <div class="action-buttons">
+                        <form action="/modify_or_delete_product/{{ product.product_number }}" method="POST">
+                            <input type="hidden" name="action" value="modify">
                             <input type="submit" value="Muokkaa">
                         </form>
+                        <form action="/modify_or_delete_product/{{ product.product_number }}" method="POST">
+                            <input type="hidden" name="action" value="delete">
+                            <input type="submit" value="Poista">
+                        </form>
+                      </div>
                     </td>
                 </tr>
             {% endfor %}

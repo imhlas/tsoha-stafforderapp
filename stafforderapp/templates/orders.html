@@ -18,12 +18,13 @@
                 <th>Tuote</th>
                 <th>Hinta</th>
                 <th>Määrä</th>
+                <th></th>
             </tr>
             {% for product in products_list %}
                 <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}€</td>
-                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.prod_price }}€</td>
+                    <td>{{ product.prod_quantity }}</td>
                     <td>
                         <form action="/delete_product" method="POST">
                             <input type="hidden" name="order_detail_id" value="{{ product.id }}">

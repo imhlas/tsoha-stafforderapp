@@ -31,3 +31,15 @@ def logout():
     del session["username"]
     del session["user_id"]
     del session["role"]
+
+def get_users_with_closed_orders():
+    sql = """
+    SELECT DISTINCT U.name
+    FROM users U
+    JOIN orders O ON U.id = O.user_id
+    WHERE O.order_status = 'Closed'
+    """
+    result = db.session.execute(sql).fetchall()
+    usernames = [row[0] for row in result]
+
+    return usernames

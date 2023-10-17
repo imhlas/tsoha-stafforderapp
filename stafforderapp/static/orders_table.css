@@ -3,6 +3,7 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     table-layout: auto;
+    margin-bottom: 10px;
 }
 
 th {
@@ -27,6 +28,21 @@ td:not(:first-child) {
     text-align: center;
 }
 
+.action-buttons {
+    display: flex; /* Display buttons horizontally */
+    gap: 10px; /* Add some spacing between buttons */
+    justify-content: center; /* Center buttons horizontally in the cell */
+    align-items: center; /* Center buttons vertically in the cell */
+}
+
 tr:last-child td {
     font-weight: bold;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
 }

@@ -13,6 +13,14 @@
     </div>
 
     {% if session.role == 1 %}
+      {% if active_orders > 0 %}
+        <div class="product-container">
+          <p>Tilauksia aktiivisena: {{ active_orders }}</p>
+          <a href="/end_order_time" class="button">SULJE TILAUSAIKA</a>
+        </div>
+      {% else %}
+        <p>Ei aktiivisia tilauksia</p>
+      {% endif %}
       <div class="product-container">
         <a href="/orders_admin" class="button">Tilaukset</a>
         <a href="/product_portfolio" class="button">Tuotteet</a>

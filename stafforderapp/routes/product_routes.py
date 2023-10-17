@@ -1,13 +1,14 @@
 from app import app
 from flask import render_template, request, redirect, make_response, session
-import products
+import products, orders
 
 
 @app.route("/")
 def index():
     user_role = session.get("role")
     if user_role==1:
-        return render_template("admin.html")
+        active_orders = orders.get_active_orders()
+        return render_template("admin.html", active_orders=active_orders)
     else:
         return render_template("index.html", products=products.get_all_products())
 
@@ -49,3 +50,22 @@ def product_portfolio():
         data = picture.read()
         products.add_picture(product_number, data)
     return redirect("/")
+
+@app.route('/modify_or_delete_product/<int:product_number>', methods=['POST'])
+def modify_or_delete_product(product_number):
+    if request.form['action'] == 'modify':
+        product_info = products.get_product_by_product_number(product_number)
+        return render_template("modify_product_price.html",
+                               product=product_info)
+    elif request.form['action'] == 'delete':
+        products.delete_product(product_number)
+    return redirect("/product_portfolio")
+
+@app.route('/update_price/<int:product_number>', methods=['POST'])
+def update_price(product_number):
+    price_text = request.form["new_price"]
+    price = float(price_text.replace(",", "."))
+
+    products.update_price(product_number, price)
+
+    return redirect("/product_portfolio")

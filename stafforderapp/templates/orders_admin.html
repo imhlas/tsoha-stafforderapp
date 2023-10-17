@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/orders_table.css"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+  {% include 'navbar.html' %}
+
+
+  <div class="main-container">
+    <div class="header">
+      <h1>Tilaukset</h1>
+    </div>
+
+    {% for username, orders in user_orders.items() %}
+        <h2>{{ username }}</h2>
+        <table>
+                <tr>
+                    <th>Tuotenimi</th>
+                    <th>Määrä</th>
+                    <th>Hinta</th>
+                </tr>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.product_name }}</td>
+                        <td>{{ order.total_quantity }}</td>
+                        <td>{{ order.total_price }} €</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>Total</td>
+                    <td>{{ total_user_data[username][0][0] }}</td>
+                    <td>{{ total_user_data[username][0][1] }} €</td>
+                </tr>
+            </table>
+    {% endfor %}
+
+  </div>
+</body>

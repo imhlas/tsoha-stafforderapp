@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/orders_table.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="main-container">
+    <div class="header">
+        <h1>Muuta tuotteen hintaa</h1>
+    </div>
+
+    <form action="/update_price/{{ product.product_number }}" method="POST">
+        <table>
+            <tr>
+                <td><label for="name">Tuotteen nimi:</label></td>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <td><label for="product_number">Tuotenumero:</label></td>
+                <td>{{ product.product_number }}</td>
+            </tr>
+            <tr>
+                <td><label for="price">Nykyinen hinta:</label></td>
+                <td>{{ product.price }}€</td>
+            </tr>
+            <tr>
+                <td><label for="new_price">Uusi hinta:</label></td>
+                <td><input type="text" name="new_price" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Päivitä hinta">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
