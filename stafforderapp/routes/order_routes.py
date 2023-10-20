@@ -4,6 +4,9 @@ import orders, users
 
 @app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
+
     product_id = request.form["product_id"]
     price = request.form["price"]
     order_id = orders.get_or_create_order(session["user_id"])
@@ -48,6 +51,9 @@ def show_orders_admin():
 
 @app.route("/delete_product", methods=["POST"])
 def delete_product_from_order():
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
+
     order_detail_id = request.form["order_detail_id"]
     orders.delete_order_detail(order_detail_id)
     return redirect("/orders")
@@ -58,4 +64,16 @@ def end_order_time():
         return render_template("error.html", message="Virhe tapahtumassa: SULJE TILAUSAIKA")
     else: 
         return redirect("/")
+
+@app.route('/mark_billed', methods=['POST'])
+def mark_billed():
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
+
+    username = request.form.get('username')
+
+    if orders.mark_order_as_billed(username):
+        return redirect("/orders_admin")
+    else:
+        return render_template("error.html", message="Tilauksen merkitseminen laskutetuksi epäonnistui")
 

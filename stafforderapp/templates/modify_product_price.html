@@ -5,13 +5,9 @@
 
 <body>
 
-{% include 'navbar.html' %}
+{% include 'navbar2.html' %}
 
 <div class="main-container">
-    <div class="header">
-        <h1>Muuta tuotteen hintaa</h1>
-    </div>
-
     <form action="/update_price/{{ product.product_number }}" method="POST">
         <table>
             <tr>
@@ -29,6 +25,7 @@
             <tr>
                 <td><label for="new_price">Uusi hinta:</label></td>
                 <td><input type="text" name="new_price" required></td>
+                <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
             </tr>
             <tr>
                 <td colspan="2">

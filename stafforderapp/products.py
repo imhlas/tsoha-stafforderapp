@@ -4,6 +4,24 @@ def get_all_products():
     sql = "SELECT * FROM products"
     return db.session.execute(sql).fetchall()
 
+def get_products_for_brand(brand_id):
+    sql = "SELECT * FROM products WHERE brand_id=:brand_id"
+    result = db.session.execute(sql, {"brand_id":brand_id})
+    return result.fetchall()
+
+def get_all_brands():
+    sql = "SELECT * FROM brands"
+    return db.session.execute(sql).fetchall()
+
+def get_brand_id(name):
+    sql = "SELECT id FROM brands WHERE name=:name"
+    result = db.session.execute(sql, {"name":name})
+    row = result.fetchone()
+    if row is None:
+        return -1
+    else:
+        return row[0]
+
 def get_product_by_product_number(product_number):
     sql = "SELECT * FROM products WHERE product_number=:product_number"
     result = db.session.execute(sql, {"product_number":product_number})
@@ -13,6 +31,12 @@ def get_image(product_number):
     sql = "SELECT data FROM images WHERE product_number=:product_number"
     result = db.session.execute(sql, {"product_number":product_number})
     return result.fetchone()[0]
+
+def get_brand_image(brand_id):
+    sql = "SELECT logo FROM brands WHERE id=:brand_id"
+    result = db.session.execute(sql, {"brand_id":brand_id})
+    return result.fetchone()[0]
+
 
 def add_product(name, product_number, price):
     sql = "INSERT INTO products (name, price, product_number) VALUES (:name,:price,:product_number)"

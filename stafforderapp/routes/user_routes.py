@@ -26,7 +26,7 @@ def create_user():
         if users.register(username, password):
             return redirect("/login")
         else:
-            return render_template("error.html", message="Rekisteröinti ei onnistunut")
+            return render_template("error.html", message="Käyttäjätunnus on jo olemassa")
 
 @app.route("/logout")
 def logout():

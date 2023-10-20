@@ -5,15 +5,15 @@
 
 <body>
 
-{% include 'navbar.html' %}
+{% include 'navbar2.html' %}
 
 <div class="main-container">
-    <div class="header">
-        <h1>Lisää uusi tuote</h1>
-    </div>
-
     <form action="/add_product" method="POST" enctype="multipart/form-data">
         <table>
+            <tr>
+                <td><label for="name">Brändin  nimi:</label></td>
+                <td><input type="text" name="brand" required></td>
+            </tr>
             <tr>
                 <td><label for="name">Tuotteen nimi:</label></td>
                 <td><input type="text" name="name" required></td>
@@ -33,6 +33,7 @@
             <tr>
                 <td colspan="2">
                     <input type="submit" value="Tallenna tuote">
+                    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
                 </td>
             </tr>
         </table>

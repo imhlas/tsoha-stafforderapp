@@ -4,37 +4,25 @@
 
 <body>
 
-  {% include 'navbar.html' %}
+  {% include 'navbar2.html' %}
 
 
   <div class="main-container">
-    <div class="header">
-      <h1>Tervetuloa</h1>
-    </div>
   
   {% if session.username %}
-  <p>
-  <div class = "product-container">
-    {% for product in products %}
-      <div class="product-card">
-        <div class="product-image">  
-          <img src="{{ url_for('show_image', product_number=product.product_number) }}" alt="{{ product.name }}">
+  <div class="product-container">
+    {% for brand in brands %}
+      <a href="{{ url_for('brand_page', brand_id=brand.id) }}" class="product-card-link">
+        <div class="brand-card">
+          <div class="brand-image">
+            <img src="{{ url_for('show_brand_image', brand_id=brand.id) }}" alt="{{ brand.name }}">
+          </div>
         </div>
-        <div class="product-info">
-          <h2>{{ product.name }}</h2>
-          <h2>{{product.price}}€</h2>
-        </div>
-        <form method="POST" action="/add_to_cart">
-          <input type="hidden" name="product_id" value="{{ product.id }}">
-          <input type="hidden" name="price" value="{{ product.price }}">
-          <input type="submit" value="Add to Cart" class="add-to-cart-button">
-        </form>
-      </div>
+      </a>
     {% endfor %}
   </div>
-  </p>
   {% else %}
-    Kirjaudu sisään tai luo tunnus sivun yläkulmasta
+  <div style="margin-top: 20px;">Kirjaudu sisään tai luo tunnus</div>
   {% endif %}
 
   </div>

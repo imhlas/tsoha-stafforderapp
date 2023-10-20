@@ -5,13 +5,9 @@
 
 <body>
 
-{% include 'navbar.html' %}
+{% include 'navbar2.html' %}
 
 <div class="main-container">
-    <div class="header">
-        <h1>Tuotevalikoima</h1>
-    </div>
-
     {% if products_list %}
         <table>
             <tr>
@@ -29,10 +25,12 @@
                       <div class="action-buttons">
                         <form action="/modify_or_delete_product/{{ product.product_number }}" method="POST">
                             <input type="hidden" name="action" value="modify">
+                            <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
                             <input type="submit" value="Muokkaa">
                         </form>
                         <form action="/modify_or_delete_product/{{ product.product_number }}" method="POST">
                             <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
                             <input type="submit" value="Poista">
                         </form>
                       </div>

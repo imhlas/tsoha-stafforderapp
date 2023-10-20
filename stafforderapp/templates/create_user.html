@@ -4,20 +4,17 @@
 
 <body>
 
-  {% include 'navbar.html' %}
+  {% include 'navbar2.html' %}
 
   <div class="main-container">
-    <div class="header"> 
-      <h2>Luo käyttäjätunnus</h2>
-    </div>
-
-    <div class="input-container">
-      <form action="/create_user" method="POST">
-        Tunnus: <input type="text" name="username"><br>
-        Salasana: <input type="password" name="password"><br>
-        <input type="submit" value="Luo tunnus"><br>
-      </form>
-    </div>
+    <div style="margin-top: 20px;">Valitse käyttäjätunnus ja salasana</div>
+      <div class="input-container">
+        <form action="/create_user" method="POST">
+          Tunnus: <input type="text" name="username"><br>
+          Salasana: <input type="password" name="password"><br>
+          <input type="submit" value="Luo tunnus"><br>
+        </form>
+      </div>
   </div>
 </body>
 

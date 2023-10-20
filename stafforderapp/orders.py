@@ -38,6 +38,7 @@ def get_active_orders():
 def get_current_order_details(user_id):
     sql_order_details= """
     SELECT 
+    OD.id AS id,
     P.name AS product_name,
     SUM(OD.quantity) AS prod_quantity,
     SUM(P.price * OD.quantity) AS prod_price
@@ -45,7 +46,7 @@ def get_current_order_details(user_id):
     JOIN products P ON P.id = OD.product_id
     JOIN orders O ON O.id = OD.order_id
     WHERE O.user_id = :user_id AND O.order_status = 'Pending'
-    GROUP BY P.name
+    GROUP BY OD.id, P.name
     """
 
     sql_total = """
@@ -109,3 +110,18 @@ def get_closed_orders_for_user(username):
     total_user_data = db.session.execute(total_user_query, {"username": username}).fetchall()
 
     return user_data, total_user_data
+
+def mark_order_as_billed(username):
+    try:
+        sql = """
+        UPDATE orders
+        SET order_status = 'Billed'
+        WHERE user_id IN (SELECT id FROM users WHERE name = :username)
+        AND order_status = 'Closed'
+        """
+
+        db.session.execute(sql, {"username": username})
+        db.session.commit()
+        return True
+    except:
+        return False
