@@ -8,8 +8,6 @@ Sovelluksen avulla työntekijät voivat tehdä henkilökuntatilauksia yrityksen 
 - Käyttäjä näkee brändikohtaisilla sivuilla  yrityksen tuotteet ja niiden henkilökuntahinnat.
 - Käyttäjä voi lisätä tuotteita omaan tilaukseensa.
 - Käyttäjä näkee listauksen tilauksensa sisällöstä ja voi lisätä/poistaa tuotteita tilausajan päättymiseen asti.
-- Ylläpitäjä näkee listauksen kaikista tuotteista sekä niiden hinnoista.
-- Ylläpitäjä voi lisätä uusia tuotteita.
 
 ## Sovelluksen ominaisuudet ylläpitäjälle
 - Ylläpitäjä voi lisätä uusia tuotteita.
