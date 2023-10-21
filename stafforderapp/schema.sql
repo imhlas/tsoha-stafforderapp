@@ -1,4 +1,4 @@
-CREATE TABLE users (
+loCREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name TEXT,
     password TEXT,
@@ -10,6 +10,7 @@ CREATE TABLE products (
     name TEXT,
     price DECIMAL(10, 2),
     product_number INTEGER 
+    brand_id INTEGER
 );
 
 CREATE TABLE images (
@@ -31,4 +32,10 @@ CREATE TABLE order_details (
     product_id INTEGER,
     quantity INTEGER,
     price DECIMAL(10,2)
+);
+
+CREATE TABLE brand (
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    logo BYTEA
 );
