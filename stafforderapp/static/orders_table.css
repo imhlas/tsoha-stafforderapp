@@ -6,7 +6,6 @@ table {
     margin-bottom: 90px;
 }
 
-/* Specify column widths */
 table th:nth-child(1) {
     width: 40%;
 }
@@ -28,11 +27,10 @@ th {
     text-align: left;
 }
 
-/* Data Rows */
 td {
     padding: 15px;
-    border-bottom: 1px solid #d1d1d1; /* Light border for row separation */
-    white-space: nowrap; /* Prevent text wrapping within cells */
+    border-bottom: 1px solid #d1d1d1; 
+    white-space: nowrap; 
 }
 
 td:first-child {
@@ -44,10 +42,10 @@ td:not(:first-child) {
 }
 
 .action-buttons {
-    display: flex; /* Display buttons horizontally */
-    gap: 10px; /* Add some spacing between buttons */
-    justify-content: center; /* Center buttons horizontally in the cell */
-    align-items: center; /* Center buttons vertically in the cell */
+    display: flex; 
+    gap: 10px; 
+    justify-content: center;
+    align-items: center;
 }
 
 tr:last-child td {
