@@ -1,4 +1,4 @@
-loCREATE TABLE users (
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name TEXT,
     password TEXT,
@@ -9,7 +9,7 @@ CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     name TEXT,
     price DECIMAL(10, 2),
-    product_number INTEGER 
+    product_number INTEGER,
     brand_id INTEGER
 );
 
