@@ -10,6 +10,7 @@ Sovelluksen avulla työntekijät voivat tehdä henkilökuntatilauksia yrityksen 
 - Käyttäjä näkee listauksen tilauksensa sisällöstä ja voi lisätä/poistaa tuotteita tilausajan päättymiseen asti.
 
 ## Sovelluksen ominaisuudet ylläpitäjälle
+- Ylläpitäjä voi lisätä uusia brändejä.
 - Ylläpitäjä voi lisätä uusia tuotteita.
 - Ylläpitäjä näkee listauksen kaikista tuotteista sekä niiden hinnoista.
 - Ylläpitäjä voi poistaa tuotteita sekä muuttaa tuotteiden henkilökuntahintoja.
@@ -43,3 +44,4 @@ Nyt voit käynnistää sovelluksen komennolla:
 ```bash
 flask run
 ```
+Sovellusta testatessa kannattaa ensin kirjautua admin-tunnuksilla ja lisätä sovellukseen brändejä ja tuotteita. Repositorion 'logot' kansio sisältää esimerkkikuvia logoista, joita voi hyödyntää brändikuvina.
