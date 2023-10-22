@@ -43,6 +43,11 @@ def add_product(name, product_number, price):
     db.session.execute(sql, {"name":name, "price":price, "product_number":product_number})
     db.session.commit()
 
+def add_brand(name, logo):
+    sql = "INSERT INTO brands (name,logo) VALUES (:name,:logo)"
+    db.session.execute(sql, {"name":name, "logo":logo})
+    db.session.commit()
+
 def add_picture(product_number, data):
     sql = "INSERT INTO images (product_number,data) VALUES (:product_number,:data)"
     db.session.execute(sql, {"product_number":product_number, "data":data})

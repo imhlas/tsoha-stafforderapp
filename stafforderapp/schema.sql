@@ -34,7 +34,7 @@ CREATE TABLE order_details (
     price DECIMAL(10,2)
 );
 
-CREATE TABLE brand (
+CREATE TABLE brands (
     id SERIAL PRIMARY KEY,
     name TEXT,
     logo BYTEA

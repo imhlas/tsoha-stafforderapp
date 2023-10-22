@@ -72,6 +72,31 @@ def product_portfolio():
         except:
             return render_template("error.html", message="Tuotteen lisääminen epäonnistui")
 
+@app.route('/brand_product')
+def add_brand_or_product():
+    return render_template("brand_product.html")
+
+@app.route('/add_brand', methods=["GET", "POST"])
+def add_brand():
+    if request.method == "GET":
+        return render_template("admin_add_brand.html")
+    if request.method == "POST":
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
+    name = request.form["brand"]
+    picture = request.files["file"]
+    picture_name = picture.filename
+    if not picture_name.endswith(".png"):
+        return render_template("error.html", message="Tiedoston pääte ei ole .png")
+    data = picture.read()
+    try:
+        products.add_brand(name, data)
+        return redirect('/brand_product')
+    except:
+        return render_template("error.html", message="Brändin lisääminen epäonnistui")
+
+
+
 @app.route('/modify_or_delete_product/<int:product_number>', methods=['POST'])
 def modify_or_delete_product(product_number):
     if session["csrf_token"] != request.form["csrf_token"]:
